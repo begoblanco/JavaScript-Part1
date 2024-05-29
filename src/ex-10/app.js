@@ -1,27 +1,27 @@
-// Escribe un programa que pida una frase
-// y escriba las vocales que aparecen
+// Escribe un programa que pida una frase 
+// y escriba cuántas veces aparecen cada una de las vocales
 
 const mainBlock = document.querySelector("main");
 const sentence = document.getElementById("sentence-1").value;
 const btnCheck = document.getElementById("btn-check");
-let found = [];
+let counter = 0;
 
 function render(msg) {
   mainBlock.innerHTML = msg;
 }
 
-function getVowels(sentence) {
+function countVowels(sentence) {
   const vowels = ["a", "e", "i", "o", "u"];
   
   for (let i = 0; i < sentence.length; i++) {
-    const letter = sentence[i].toLowerCase();
-    if (vowels.includes(letter) && !found.includes(letter)) {
-      found.push(sentence[i].toLowerCase());
+    if (vowels.includes(sentence[i].toLowerCase())) {
+      counter++;
     }
   }
-  return `Hay ${found} vowels.`;
+  return `Hay ${counter} vowels.`;
 }
 
 btnCheck.addEventListener("click", () => {
-  render(getVowels(sentence));
+  render(countVowels(sentence));
 });
+
